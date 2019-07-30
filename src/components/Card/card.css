@@ -1,0 +1,13 @@
+
+  .img-container {
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: scale-down;
+    overflow: hidden;
+    text-align: center;
+    background:#6CADDC;
+    margin: 20px;
+    
+  }
+  
+  

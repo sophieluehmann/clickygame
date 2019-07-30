@@ -1,4 +1,43 @@
-/* eslint-disable no-labels */
+import React, { Component } from "react";
+import "./App.css";
+import Card from "./components/Card"
+import images from "./image.json"
+import Wrapper from "./components/Wrapper"
+
+class App extends Component {
+
+  state = {
+    images
+  };
+
+  render() {
+    return (
+      <Wrapper>
+      
+      {this.state.images.map(image => (
+        <Card
+          key={image.id}
+          image={image.image}
+        />
+      ))}
+    </Wrapper>
+      
+    );
+  }
+}
+
+export default App;
+
+
+
+
+
+
+
+
+
+/*
+
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -55,7 +94,7 @@ export default class App extends React.Component {
     );
   
 
-  /*return (
+  return (
     <div className={classes.root}>
       <Grid container spacing={1}>
         <Grid container item xs={12} spacing={3}>
@@ -70,7 +109,8 @@ export default class App extends React.Component {
       </Grid>
     </div>
   );
-*/
+
 
 }
 
+*/
