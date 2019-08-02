@@ -4,11 +4,41 @@ import Card from "./components/Card"
 import images from "./image.json"
 import Wrapper from "./components/Wrapper"
 
+
 class App extends Component {
 
   state = {
-    images
+    images,
+    count: 0,
+    clicked: [],
   };
+
+  handleClick = props => {
+   
+    if (!this.state.clicked.includes(props.id)) {
+    this.setState({ count: this.state.count + 1 }); 
+    this.setState({ images: this.shuffle(this.state.images) })
+    this.state.clicked.push(props.id);
+    } else {
+      this.setState({ count: 0, clicked: []});
+      console.log("you lost");
+    }
+    console.log(this.state.count);
+    console.log(this.state.clicked);
+  };
+
+  shuffle = array => {
+    let currentIndex = array.length, temp, random;
+    while (currentIndex !== 0) {
+      random = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temp = array[currentIndex];
+      array[currentIndex] = array[random];
+      array[random] = temp;
+    }
+    return array;
+  }
+
 
   render() {
     return (
@@ -16,10 +46,12 @@ class App extends Component {
       
       {this.state.images.map(image => (
         <Card
-          key={image.id}
+          handleClick={this.handleClick}
+          id={image.id}
           image={image.image}
         />
       ))}
+
     </Wrapper>
       
     );
