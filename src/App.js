@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-import Card from "./components/Card"
-import images from "./image.json"
-import Wrapper from "./components/Wrapper"
+import Card from "./components/Card";
+import images from "./image.json";
+import Wrapper from "./components/Wrapper";
+import Navbar from "./components/Navbar";
+
 
 
 class App extends Component {
@@ -10,6 +12,7 @@ class App extends Component {
   state = {
     images,
     count: 0,
+    highscore: 0,
     clicked: [],
   };
 
@@ -20,9 +23,13 @@ class App extends Component {
     this.setState({ images: this.shuffle(this.state.images) })
     this.state.clicked.push(props.id);
     } else {
+      if (this.state.count >= this.state.highscore) {
+        this.setState({ highscore: this.state.count });
+      }
       this.setState({ count: 0, clicked: []});
       console.log("you lost");
     }
+    
     console.log(this.state.count);
     console.log(this.state.clicked);
   };
@@ -44,6 +51,11 @@ class App extends Component {
     return (
       <Wrapper>
       
+      <Navbar
+      score={this.state.count}
+      highscore={this.state.highscore}
+      />
+   
       {this.state.images.map(image => (
         <Card
           handleClick={this.handleClick}
@@ -51,7 +63,9 @@ class App extends Component {
           image={image.image}
         />
       ))}
-
+      
+      
+      
     </Wrapper>
       
     );
