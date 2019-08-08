@@ -1,3 +1,17 @@
+## Clickygame
+
+Clickygame is a memory game created in React. The user clicks an image and earns a point for each 
+image they only click once. Each time an image is clicked, the images rearrange. If an image is clicked more than once, the user loses that round. 
+
+![](Clickygame2.gif)
+
+## Project Status
+
+Issues needing to be resolved: 
+- unable to deploy on gh-pages
+
+# Technology Used
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
